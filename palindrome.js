@@ -1,9 +1,14 @@
-function longest_palindrome(str1){  
+function is_Palindrome(S) {
+  var rev = S.split("").reverse().join("");
+  return S == rev;
+}
+  
+function solution(S){  
   var max_length = 0,
   maxp = '';
   
-  for(var i=0; i < str1.length; i++) {
-    var subs = str1.substr(i, str1.length);
+  for(var i=0; i < S.length; i++) {
+    var subs = S.substr(i, S.length);
 
     for(var j=subs.length; j>=0; j--) {
       var sub_subs_str = subs.substr(0, j);
@@ -20,17 +25,16 @@ function longest_palindrome(str1){
   }
 
   if (max_length===1) {
-    return false;
+    return "NO";
   } else if(max_length === 2) {
-    return true;
+    return "YES";
   } else {
     for(var x = 2; x < max_length; x++) {
       if(max_length % x === 0) {
-        return false;
+        return "NO";
       }
     }
-    return true;  
+    return "YES";
   }
 }
-console.log(longest_palindrome("abracadabra"));
-console.log(longest_palindrome("1221"));
+console.log(solution("122243323341"));
